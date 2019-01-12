@@ -9,6 +9,7 @@ import kotlinx.android.synthetic.main.activity_add_recipe.*
 
 class AddRecipeActivity : AppCompatActivity() {
     var GALLERY_REQUEST = 1
+    var IMAGE_URL: Uri ?= null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,6 +21,12 @@ class AddRecipeActivity : AppCompatActivity() {
             galleryIntent.type = "image/*"
             startActivityForResult(Intent.createChooser(galleryIntent, "Select Image"), GALLERY_REQUEST)
         }
+
+        button_addRecipeActivityAdd.setOnClickListener {
+            //todo save data
+        }
+
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -27,9 +34,11 @@ class AddRecipeActivity : AppCompatActivity() {
 
         if (requestCode == GALLERY_REQUEST && resultCode == RESULT_OK) {
             val imageURI: Uri = data!!.data
+            IMAGE_URL = imageURI
 
             Picasso.get().load(imageURI).into(imageView_addRecipeActivityRecipeImage)
         }
+
 
     }
 }
