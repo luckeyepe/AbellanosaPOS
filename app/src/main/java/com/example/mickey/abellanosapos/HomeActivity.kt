@@ -8,6 +8,7 @@ import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mickey.abellanosapos.viewholders.BasicRecipeRowViewHolder
+import com.google.firebase.auth.FirebaseAuth
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.activity_home.*
@@ -17,6 +18,8 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+
+        FirebaseAuth.getInstance().signInAnonymously()
 
 //        button_homeGoToAddRecipe.setOnClickListener {
 //            startActivity(Intent(this, AddRecipeActivity::class.java))

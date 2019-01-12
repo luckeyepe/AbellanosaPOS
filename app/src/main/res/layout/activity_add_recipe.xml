@@ -13,7 +13,7 @@
             android:id="@+id/imageView_addRecipeActivityRecipeImage"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-    />
+            android:scaleType="centerCrop"/>
     <ScrollView
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -27,44 +27,38 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName"
-                    android:text="Meal Type"
                     android:ems="10"
-                    android:id="@+id/editText_addRecipeActivityMealType"/>
+                    android:id="@+id/editText_addRecipeActivityMealType" android:hint="Meal Type"/>
             <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName"
-                    android:text="No. of Serving"
                     android:ems="10"
-                    android:id="@+id/editText_addRecipeActivityNumberOfServing"/>
+                    android:id="@+id/editText_addRecipeActivityNumberOfServing" android:hint="No. of Serving"/>
+            <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textCapWords|textPersonName"
+                    android:ems="10"
+                    android:id="@+id/editText_addRecipeActivityRecipeName" android:hint="Recipe Name"/>
             <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName"
-                    android:text="Recipe Name"
                     android:ems="10"
-                    android:id="@+id/editText_addRecipeActivityRecipeName"/>
+                    android:id="@+id/editText_addRecipeActivityCookTime" android:hint="Cook Time"/>
             <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textPersonName"
-                    android:text="Cook TIme"
+                    android:inputType="textMultiLine|textPersonName"
                     android:ems="10"
-                    android:id="@+id/editText_addRecipeActivityCookTime"/>
+                    android:id="@+id/editText_addRecipeActivityIngredients" android:hint="Ingredients"/>
             <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textPersonName"
-                    android:text="Ingredients"
+                    android:inputType="textMultiLine|textPersonName"
                     android:ems="10"
-                    android:id="@+id/editText_addRecipeActivityIngredients"/>
-            <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPersonName"
-                    android:text="Instructions"
-                    android:ems="10"
-                    android:id="@+id/editText_addRecipeActivityInstructions"/>
+                    android:id="@+id/editText_addRecipeActivityInstructions" android:hint="Instructions"/>
         </LinearLayout>
     </ScrollView>
     <Button
