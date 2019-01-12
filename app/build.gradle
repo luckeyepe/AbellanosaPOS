@@ -35,4 +35,7 @@ dependencies {
     //recycler view groupie
     implementation 'com.xwray:groupie:2.3.0'//easy recyler view adapter
     implementation 'com.xwray:groupie-kotlin-android-extensions:2.3.0'
+
+    //picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
 }
