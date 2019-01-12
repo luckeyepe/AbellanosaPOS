@@ -1,7 +1,7 @@
 package com.example.mickey.abellanosapos
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_home.*
 
@@ -11,8 +11,8 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        button_homeGoToAddRecipe.setOnClickListener {
-            startActivity(Intent(this, AddRecipeActivity::class.java))
-        }
+//        button_homeGoToAddRecipe.setOnClickListener {
+//            startActivity(Intent(this, AddRecipeActivity::class.java))
+//        }
     }
 }
