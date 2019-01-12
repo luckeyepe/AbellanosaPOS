@@ -7,4 +7,72 @@
         android:layout_height="match_parent"
         tools:context=".AddRecipeActivity">
 
+    <ImageView
+            android:layout_width="0dp"
+            android:layout_height="130dp" app:srcCompat="@mipmap/ic_launcher"
+            android:id="@+id/imageView"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+    />
+    <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/scrollView2"
+            app:layout_constraintBottom_toTopOf="@+id/button" android:layout_marginTop="8dp">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:orientation="vertical">
+            <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:text="Meal Type"
+                    android:ems="10"
+                    android:id="@+id/editText"/>
+            <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:text="Name of Service"
+                    android:ems="10"
+                    android:id="@+id/editText2"/>
+            <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:text="Recipe Name"
+                    android:ems="10"
+                    android:id="@+id/editText4"/>
+            <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:text="Cook TIme"
+                    android:ems="10"
+                    android:id="@+id/editText5"/>
+            <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:text="Ingredients"
+                    android:ems="10"
+                    android:id="@+id/editText6"/>
+            <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:text="Instructions"
+                    android:ems="10"
+                    android:id="@+id/editText7"/>
+        </LinearLayout>
+    </ScrollView>
+    <Button
+            android:text="Button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/button"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+    />
 </android.support.constraint.ConstraintLayout>
