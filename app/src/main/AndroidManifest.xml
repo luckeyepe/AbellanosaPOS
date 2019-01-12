@@ -17,6 +17,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".AddRecipeActivity">
+            <!-- adds back button -->
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".HomeActivity"/>
         </activity>
     </application>
 

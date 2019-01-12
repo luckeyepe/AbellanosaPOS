@@ -5,7 +5,7 @@ import com.xwray.groupie.Item
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.row_recipe_layout.view.*
 
-class BasicRecipeRowViewHolder:Item<ViewHolder>() {
+class BasicRecipeRowViewHolder():Item<ViewHolder>() {
     override fun getLayout(): Int {
         return R.layout.row_recipe_layout
     }
