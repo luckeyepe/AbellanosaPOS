@@ -39,11 +39,10 @@ class HomeActivity : AppCompatActivity() {
         var adapter = GroupAdapter<ViewHolder>()
         val db = FirebaseFirestore.getInstance().collection("Recipes")
 
-        adapter.clear()
-        recyclerView_homeActivityRecyler.adapter = adapter
-
         db.addSnapshotListener { querySnapshot, firebaseFirestoreException ->
             if (querySnapshot != null){
+                adapter.clear()
+
                 for (document in querySnapshot){
                     var recipe = document.toObject(RecipeClass::class.java)
                     adapter.add(BasicRecipeRowViewHolder(recipe))
