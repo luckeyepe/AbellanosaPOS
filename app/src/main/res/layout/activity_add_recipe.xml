@@ -32,9 +32,9 @@
             <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textPersonName"
                     android:ems="10"
-                    android:id="@+id/editText_addRecipeActivityNumberOfServing" android:hint="No. of Serving"/>
+                    android:id="@+id/editText_addRecipeActivityNumberOfServing" android:hint="No. of Serving"
+                    android:inputType="number"/>
             <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -44,19 +44,19 @@
             <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textPersonName"
+                    android:inputType="number"
                     android:ems="10"
-                    android:id="@+id/editText_addRecipeActivityCookTime" android:hint="Cook Time"/>
+                    android:id="@+id/editText_addRecipeActivityCookTime" android:hint="Cook Time (in min)"/>
             <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textMultiLine|textPersonName"
+                    android:inputType="textPersonName"
                     android:ems="10"
                     android:id="@+id/editText_addRecipeActivityIngredients" android:hint="Ingredients"/>
             <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textMultiLine|textPersonName"
+                    android:inputType="textPersonName"
                     android:ems="10"
                     android:id="@+id/editText_addRecipeActivityInstructions" android:hint="Instructions"/>
         </LinearLayout>
