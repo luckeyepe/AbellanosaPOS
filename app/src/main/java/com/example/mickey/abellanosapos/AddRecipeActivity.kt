@@ -79,41 +79,52 @@ class AddRecipeActivity : AppCompatActivity() {
                         task: Task<DocumentReference> ->
                         if (task.isSuccessful){
                             recipe.recipe_id = task.result!!.id
-                            db.document(taskId.toString()).update("recipe_id", recipe.recipe_id)
+                            Log.d("AddRecipe", recipe.recipe_id)
 
-                            val storage = FirebaseStorage.getInstance().reference
-                                .child("recipe_pictures")
-                                .child("$taskId.jpg")
+                            db.document(task.result!!.id)
+                                .update("recipe_id", task.result!!.id)
+                                .addOnCompleteListener {
+                                    if (task.isSuccessful){
+                                        val storage = FirebaseStorage.getInstance().reference
+                                            .child("recipe_pictures")
+                                            .child("${recipe.recipe_id}.jpg")
 
-                            val filePath = storage.putFile(IMAGE_URL!!)
+                                        val filePath = storage.putFile(IMAGE_URL!!)
 
-                            var urlTask = filePath.continueWithTask(Continuation<UploadTask.TaskSnapshot, Task<Uri>> { task ->
-                                if (!task.isSuccessful) {
-                                    task.exception?.let {
-                                        throw it
-                                    }
-                                }
-                                return@Continuation storage.downloadUrl
-                            }).addOnCompleteListener { task ->
-                                if (task.isSuccessful) {
-                                    val downloadUri = task.result
+                                        var urlTask = filePath.continueWithTask(Continuation<UploadTask.TaskSnapshot, Task<Uri>> { task ->
+                                            if (!task.isSuccessful) {
+                                                task.exception?.let {
+                                                    throw it
+                                                }
+                                            }
+                                            return@Continuation storage.downloadUrl
+                                        }).addOnCompleteListener { task ->
+                                            if (task.isSuccessful) {
+                                                val downloadUri = task.result
 
-                                    db.document(recipe.recipe_id!!)
-                                        .update("recipe_imageUrl", downloadUri.toString())
-                                        .addOnCompleteListener {
-                                            task: Task<Void> ->
-                                            if (task.isSuccessful){
-                                                progress.dismiss()
-                                                Log.d("AddRecipe", "Upload Success")
-                                                successDialog("Recipe has been uploaded", "SUCCESS")
-                                            }else{
-                                                progress.dismiss()
-                                                Log.e("AddRecipe", task.exception.toString())
-                                                errorDialog("Check your internet connection", "NO INTERNET")
+                                                db.document(recipe.recipe_id!!)
+                                                    .update("recipe_imageUrl", downloadUri.toString())
+                                                    .addOnCompleteListener {
+                                                            task: Task<Void> ->
+                                                        if (task.isSuccessful){
+                                                            progress.dismiss()
+                                                            Log.d("AddRecipe", "Upload Success")
+                                                            successDialog("Recipe has been uploaded", "SUCCESS")
+                                                        }else{
+                                                            progress.dismiss()
+                                                            Log.e("AddRecipe", task.exception.toString())
+                                                            errorDialog("Check your internet connection", "NO INTERNET")
+                                                        }
+                                                    }
                                             }
                                         }
+                                    }else{
+                                        progress.dismiss()
+                                        Log.e("AddRecipe", task.exception.toString())
+                                        errorDialog("Check your internet connection", "NO INTERNET")
+                                    }
                                 }
-                            }
+
                         }else{
                             progress.dismiss()
                             Log.e("AddRecipe", task.exception.toString())

@@ -3,12 +3,17 @@ package com.example.mickey.abellanosapos
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mickey.abellanosapos.models.RecipeClass
 import com.example.mickey.abellanosapos.viewholders.BasicRecipeRowViewHolder
+import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.QuerySnapshot
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.activity_home.*
@@ -25,22 +30,46 @@ class HomeActivity : AppCompatActivity() {
 //            startActivity(Intent(this, AddRecipeActivity::class.java))
 //        }
 
-        setUpDummy()
+//        setUpDummy()
+
+        setUpData()
     }
 
-    private fun setUpDummy() {
+    private fun setUpData() {
         var adapter = GroupAdapter<ViewHolder>()
+        val db = FirebaseFirestore.getInstance().collection("Recipes")
 
-        adapter.add(BasicRecipeRowViewHolder())
-        adapter.add(BasicRecipeRowViewHolder())
-        adapter.add(BasicRecipeRowViewHolder())
-        adapter.add(BasicRecipeRowViewHolder())
-        adapter.add(BasicRecipeRowViewHolder())
-        adapter.add(BasicRecipeRowViewHolder())
-
-        recyclerView_homeActivityRecyler.layoutManager = LinearLayoutManager(this)
+        adapter.clear()
         recyclerView_homeActivityRecyler.adapter = adapter
+
+        db.addSnapshotListener { querySnapshot, firebaseFirestoreException ->
+            if (querySnapshot != null){
+                for (document in querySnapshot){
+                    var recipe = document.toObject(RecipeClass::class.java)
+                    adapter.add(BasicRecipeRowViewHolder(recipe))
+                }
+
+                recyclerView_homeActivityRecyler.layoutManager = LinearLayoutManager(this)
+                recyclerView_homeActivityRecyler.adapter = adapter
+            }else{
+                Log.e("Home", firebaseFirestoreException.toString())
+            }
+        }
     }
+
+//    private fun setUpDummy() {
+//        var adapter = GroupAdapter<ViewHolder>()
+//
+//        adapter.add(BasicRecipeRowViewHolder())
+//        adapter.add(BasicRecipeRowViewHolder())
+//        adapter.add(BasicRecipeRowViewHolder())
+//        adapter.add(BasicRecipeRowViewHolder())
+//        adapter.add(BasicRecipeRowViewHolder())
+//        adapter.add(BasicRecipeRowViewHolder())
+//
+//        recyclerView_homeActivityRecyler.layoutManager = LinearLayoutManager(this)
+//        recyclerView_homeActivityRecyler.adapter = adapter
+//    }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_add_recipe, menu)
