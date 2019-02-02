@@ -7,13 +7,10 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.mickey.abellanosapos.models.RecipeClass
 import com.example.mickey.abellanosapos.viewholders.BasicRecipeRowViewHolder
-import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.QuerySnapshot
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.activity_home.*
@@ -53,6 +50,15 @@ class HomeActivity : AppCompatActivity() {
             }else{
                 Log.e("Home", firebaseFirestoreException.toString())
             }
+        }
+
+        adapter.setOnItemClickListener { item, view ->
+            val recipeItem = item as BasicRecipeRowViewHolder
+            val intent = Intent(view.context, RecipeDetailsActivity::class.java)
+            val recipeItemUid = recipeItem.recipe.recipe_id
+
+            intent.putExtra("item_uid", recipeItemUid)
+            startActivity(intent)
         }
     }
 
