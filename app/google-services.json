@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "77645148416",
+    "firebase_url": "https://abellanosapos.firebaseio.com",
+    "project_id": "abellanosapos",
+    "storage_bucket": "abellanosapos.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:77645148416:android:a882fa5f0d778b46",
+        "android_client_info": {
+          "package_name": "com.example.mickey.abellanosapos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "77645148416-f56qndopn6h17qnbbgcegr08dcq85pgm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mickey.abellanosapos",
+            "certificate_hash": "f7cecba016bb38e3034ff00ca4f6f860092b8daf"
+          }
+        },
+        {
+          "client_id": "77645148416-b9ikdo59bc91ecoi9gdppob6mntrkn82.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDj91yx8lTrUzfy5JwJVPK2mqv4TQh_zYo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "77645148416-b9ikdo59bc91ecoi9gdppob6mntrkn82.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
