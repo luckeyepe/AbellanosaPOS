@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.mickey.abellanosapos.models.RecipeClass
 import com.example.mickey.abellanosapos.viewholders.BasicRecipeRowViewHolder
 import com.google.firebase.auth.FirebaseAuth
@@ -20,8 +21,6 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-
-        FirebaseAuth.getInstance().signInAnonymously()
 
 //        button_homeGoToAddRecipe.setOnClickListener {
 //            startActivity(Intent(this, AddRecipeActivity::class.java))
@@ -45,7 +44,7 @@ class HomeActivity : AppCompatActivity() {
                     adapter.add(BasicRecipeRowViewHolder(recipe))
                 }
 
-                recyclerView_homeActivityRecyler.layoutManager = LinearLayoutManager(this)
+                recyclerView_homeActivityRecyler.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
                 recyclerView_homeActivityRecyler.adapter = adapter
             }else{
                 Log.e("Home", firebaseFirestoreException.toString())
@@ -83,8 +82,14 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when(item?.itemId){
-            R.id.menuItem_menuAddRecipeAdd ->{
+            R.id.menuItem_menuAddRecipeMenuAdd ->{
                 startActivity(Intent(this, AddRecipeActivity::class.java))
+            }
+
+            R.id.menuItem_menuAddRecipeMenuLogOut ->{
+                FirebaseAuth.getInstance().signOut()
+                startActivity(Intent(this, LogInActivity::class.java))
+                finish()
             }
         }
         return super.onOptionsItemSelected(item)
